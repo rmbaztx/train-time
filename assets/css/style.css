@@ -1,1 +1,18 @@
 /*style.css for train-time */
+.container {
+        max-width:1080px;
+        margin:auto;
+        min-height: 800px;
+        background-image:url("../images/circles-dark.png");
+        padding-top:2px;
+    }
+.jumbotron {
+    background-color:darkblue;
+}
+#table-with-border {
+    border-width:4px;
+    border-style: solid;
+    border-color:cornflowerblue;
+    border-radius:12px;
+    padding-top:0px;
+}
