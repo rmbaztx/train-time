@@ -1,4 +1,3 @@
-//
   // Initialize Firebase
   // Be sure link to firebase.js is in Index.html
   // Add line to be sure HTML is finished loading before running any script
@@ -20,7 +19,7 @@
   firebase.initializeApp(config);
 
   var database = firebase.database();
-// 2. When button to add a train's info to the schedule is clicked
+// When button to add a train's info to the schedule is clicked
 $("#add-train-btn").on("click", function(event) {
     event.preventDefault();
     console.log("submit button clicked");  //OK to here
@@ -43,7 +42,7 @@ $("#add-train-btn").on("click", function(event) {
     // Upload new train record to the database
     database.ref().push(newTrain);  //OK to here - data is showing up in Firebase database, though I need to change two fields
   
-    // Logs everything to console
+    // Log everything to console
     console.log(newTrain.name);
     console.log(newTrain.destination);
     console.log(newTrain.firstTime);
@@ -55,7 +54,7 @@ $("#add-train-btn").on("click", function(event) {
     $("#train-first-time-input").val("");
     $("#train-interval-input").val("");  //OK to here
 })
-   // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+   // Create Firebase event for adding this train record to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
     console.log("Snapshot all = " + childSnapshot.val()); 
@@ -74,8 +73,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
     // make first time and interval useful to date/time calculations
     var currentTime = moment();
-    // var frequency = moment(trainInterval, "HH:mm");
-    // var frequency = trainInterval;
     var firstTimeConverted = moment(trainFirstTime, "HH:mm").subtract(5, "days");
     
 
@@ -84,12 +81,12 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     // the proper data to the database
     // Calculate next arrival time
     
-    console.log("current time = " + currentTime); //unix number
-    console.log("frequency = " + trainInterval); //invalid date format
-    console.log("interval, minutes = " + moment(trainInterval), "minutes");
-    console.log("firstTimeConverted = " + firstTimeConverted); //unix number
-    console.log("firstTimeConverted, formatted " + moment(firstTimeConverted).format("HH:mm")); //15:25
-    console.log("currentTime formatted = " + moment(currentTime).format("HH:mm")); //3:27
+    // console.log("current time = " + currentTime); //unix number
+    // console.log("frequency = " + trainInterval); //invalid date format
+    // console.log("interval, minutes = " + moment(trainInterval), "minutes");
+    // console.log("firstTimeConverted = " + firstTimeConverted); //unix number
+    // console.log("firstTimeConverted, formatted " + moment(firstTimeConverted).format("HH:mm")); //15:25
+    // console.log("currentTime formatted = " + moment(currentTime).format("HH:mm")); //3:27
     
     // from "train-example" class exercise:
     var tFrequency = trainInterval; 
